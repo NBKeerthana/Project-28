@@ -44,6 +44,12 @@ function setup() {
   
 }
 
+function keyPressed(){
+  if(keyCode===32){
+    Matter.Body.setPosition(stone.body, {x:110,y:400})
+    launcherObject.attach(stone.body);
+  }
+}
 
 function draw() {
   rectMode(CENTER);
@@ -67,6 +73,17 @@ function draw() {
 
   slingshot.display()
 
+  detectollision(stone,mango1);
+  detectollision(stone,mango2);
+  detectollision(stone,mango3);
+  detectollision(stone,mango4);
+  detectollision(stone,mango5);
+  detectollision(stone,mango6);
+  detectollision(stone,mango7);
+  detectollision(stone,mango8);
+  detectollision(stone,mango9);
+  detectollision(stone,mango10);
+
   drawSprites();
  
 }
@@ -77,4 +94,14 @@ function mouseDragged(){
 
 function mouseReleased(){
     slingshot.fly();
+}
+
+function detectollision(lstone,lmango){
+  mangoBodyPosition = lmango.body.position
+  stoneBodyPosition = lstone.body.position
+
+  var distance = dist(stoneBodyPosition.x, stoneBodyPosition.y, mangoBodyPosition.x, mangoBodyPosition.y)
+  if(distance<=lmango.r+lstone.r){
+    Matter.Body.setStatic(lmango.body,false)
+  }
 }
