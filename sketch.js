@@ -1,4 +1,3 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -22,33 +21,26 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	tree = new Tree(900,300,500,500)
+	tree = new Tree(900,300,50,50)
 	ground = new Ground(600,548,1200,15)
-	stone = new Stone(110,400,70,70)
-	boy = new Boy(200,450,250,250)
+	stone = new Stone(160,400,70,70)
+	boy = new Boy(250,450,250,250)
 
-	mango1 = new Mango(900,220,50,50)
-	mango2 = new Mango(850,180,60,60)
-	mango3 = new Mango(920,100,60,60)
-	mango4 = new Mango(1030,180,50,50)
-	mango5 = new Mango(750,220,70,70)
-	mango6 = new Mango(820,270,60,60)
-	mango7 = new Mango(960,160,80,80)
-	mango8 = new Mango(820,120,50,50)
-	mango9 = new Mango(970,255,60,60)
-	mango10 = new Mango(1100,240,70,70)
+	mango1 = new Mango(900,220,10,10)
+	mango2 = new Mango(850,180,12,12)
+	mango3 = new Mango(920,100,12,12)
+	mango4 = new Mango(1030,180,10,10)
+	mango5 = new Mango(750,220,15,15)
+	mango6 = new Mango(820,270,12,12)
+	mango7 = new Mango(960,160,16,16)
+	mango8 = new Mango(820,120,10,10)
+	mango9 = new Mango(970,255,12,12)
+	mango10 = new Mango(1100,240,15,15)
 
-	slingshot = new SlingShot(stone.body,{x:110,y:400})
+	slingshot = new SlingShot(stone.body,{x:160,y:400})
 
 	Engine.run(engine);
   
-}
-
-function keyPressed(){
-  if(keyCode===32){
-    Matter.Body.setPosition(stone.body, {x:110,y:400})
-    launcherObject.attach(stone.body);
-  }
 }
 
 function draw() {
@@ -86,6 +78,13 @@ function draw() {
 
   drawSprites();
  
+}
+
+function keyPressed(){
+  if(keyCode===32){
+    Matter.Body.setPosition(stone.body, {x:160,y:400})
+    slingshot.attach(stone.body)
+  }
 }
 
 function mouseDragged(){
